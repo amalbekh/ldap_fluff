@@ -11,9 +11,14 @@ class LdapFluff::ActiveDirectory::MemberService < LdapFluff::GenericMemberServic
   # get a list [] of ldap groups for a given user
   # in active directory, this means a recursive lookup
   def find_user_groups(uid)
-    data = find_user(uid)
-    _groups_from_ldap_data(data.first)
+    groups = []
+    @ldap.search(:filter => Net::LDAP::Filter.eq('memberuid', uid),
+                 :base => @group_base).each do |entry|
+      groups << entry[:distinguishedName][0]
+    end
+    groups
   end
+
 
   # return the :memberof attrs + parents, recursively
   def _groups_from_ldap_data(payload)
