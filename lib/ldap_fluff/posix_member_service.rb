@@ -20,7 +20,7 @@ class LdapFluff::Posix::MemberService < LdapFluff::GenericMemberService
     groups = []
     @ldap.search(:filter => Net::LDAP::Filter.eq('memberuid', uid),
                  :base => @group_base).each do |entry|
-      groups << entry[:dn][0]
+      groups << entry[:description][0]
     end
     groups
   end
