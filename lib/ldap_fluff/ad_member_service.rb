@@ -20,7 +20,7 @@ class LdapFluff::ActiveDirectory::MemberService < LdapFluff::GenericMemberServic
   def _groups_from_ldap_data(payload)
     data = []
     if !payload.nil?
-      data     = payload[:memberof]
+      data = payload[:memberof]
     end
     data
   end
