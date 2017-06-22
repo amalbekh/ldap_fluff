@@ -4,7 +4,7 @@ require 'active_support/core_ext/hash'
 class LdapFluff::Config
   ATTRIBUTES = %w[host port encryption base_dn group_base server_type service_user
                     service_pass anon_queries attr_login search_filter
-                    instrumentation_service ]
+                    instrumentation_service ou_application_filter ]
   ATTRIBUTES.each { |attr| attr_reader attr.to_sym }
 
   DEFAULT_CONFIG = { 'port' => 389,
