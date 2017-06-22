@@ -11,6 +11,7 @@ class LdapFluff::Generic
     @bind_pass  = config.service_pass
     @anon       = config.anon_queries
     @attr_login = config.attr_login
+    @ou_application_filter = config.ou_application_filter
     @base       = config.base_dn
     @group_base = (config.group_base.empty? ? config.base_dn : config.group_base)
     @member_service = self.class::MemberService.new(@ldap, config)
