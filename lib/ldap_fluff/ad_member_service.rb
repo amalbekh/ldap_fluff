@@ -30,18 +30,18 @@ class LdapFluff::ActiveDirectory::MemberService < LdapFluff::GenericMemberServic
   # recursively loop over the parent list
   def _walk_group_ancestry(group_dns = [], known_groups = [])
     set = []
-#     group_dns.each do |group_dn|
-#       search = @ldap.search(:base => group_dn, :scope => Net::LDAP::SearchScope_BaseObject, :attributes => ['memberof'])
-#       if !search.nil? && !search.first.nil?
-#         groups                       = search.first[:memberof] - known_groups
-#         known_groups                += groups
-#         next_level, new_known_groups = _walk_group_ancestry(groups, known_groups)
-#         set                         += next_level
-#         set                         += groups
-#         known_groups                += next_level
-#       end
-#     end
-#     [set, known_groups]
+    group_dns.each do |group_dn|
+      search = @ldap.search(:base => group_dn, :scope => Net::LDAP::SearchScope_BaseObject, :attributes => ['memberof'])
+      if !search.nil? && !search.first.nil?
+        groups                       = search.first[:memberof] - known_groups
+        known_groups                += groups
+        next_level, new_known_groups = _walk_group_ancestry(groups, known_groups)
+        set                         += next_level
+        set                         += groups
+        known_groups                += next_level
+      end
+    end
+    [set, known_groups]
   end
 
   def class_filter
