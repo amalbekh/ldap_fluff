@@ -26,7 +26,7 @@ class LdapFluff::ActiveDirectory::MemberService < LdapFluff::GenericMemberServic
   end
 
   # recursively loop over the parent list
-  def _walk_group_ancestry(group_dns = [], known_groups = [])
+  def _walk_group_ancestry(group_dns = [amelia], known_groups = [])
     set = []
     group_dns.each do |group_dn|
       search = @ldap.search(:base => group_dn, :scope => Net::LDAP::SearchScope_BaseObject, :attributes => ['memberof'])
