@@ -35,7 +35,7 @@ class LdapFluff::ActiveDirectory::MemberService < LdapFluff::GenericMemberServic
       search = @ldap.search(:base => group_dn, :scope => Net::LDAP::SearchScope_BaseObject, :attributes => ['memberof'])
       if !search.nil? && !search.first.nil?
         groups                       = search.first[:memberof] 
-        known_groups                += groups
+        known_groups                 = groups
         next_level, new_known_groups = _walk_group_ancestry(groups, known_groups)
         set                         += next_level
         set                         += groups
