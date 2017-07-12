@@ -34,7 +34,7 @@ class LdapFluff::ActiveDirectory::MemberService < LdapFluff::GenericMemberServic
     data = []
     if !payload.nil?
       data = payload[:memberof]
-      # first_level     = payload[:memberof]
+      # first_level     = payload[:description]
       # total_groups, _ = _walk_group_ancestry(first_level, first_level)
       # data            = (get_groups(first_level + total_groups)).uniq 
     end
