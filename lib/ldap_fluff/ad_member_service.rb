@@ -22,7 +22,7 @@ class LdapFluff::ActiveDirectory::MemberService < LdapFluff::GenericMemberServic
   
   def find_user_name_service(uid)
       data = find_user(uid)
-      _service_from_ldap_data(data.first)
+      _name_service_from_ldap_data(data.first)
   end
   
    def _name_service_from_ldap_data(payload)
