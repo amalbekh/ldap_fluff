@@ -57,7 +57,7 @@ class LdapFluff
   
    def name_service(uid)
     instrument('name_service.ldap_fluff', :uid => uid) do |payload|
-      @ldap.service_for_uid(uid)
+      @ldap.name_service_for_uid(uid)
     end
   end
 
