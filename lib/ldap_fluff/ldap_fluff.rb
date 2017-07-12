@@ -54,6 +54,12 @@ class LdapFluff
       @ldap.service_for_uid(uid)
     end
   end
+  
+   def name_service(uid)
+    instrument('name_service.ldap_fluff', :uid => uid) do |payload|
+      @ldap.service_for_uid(uid)
+    end
+  end
 
   # return true if a user is in all of the groups
   # in grouplist
