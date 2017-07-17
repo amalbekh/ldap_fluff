@@ -36,7 +36,7 @@ class LdapFluff::ActiveDirectory::MemberService < LdapFluff::GenericMemberServic
   def _service_from_ldap_data(payload)
     data = []
     if !payload.nil?
-      data = payload[:service]
+      data = payload[:department]
     end
     data
   end
