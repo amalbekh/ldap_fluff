@@ -25,7 +25,20 @@ class LdapFluff::ActiveDirectory::MemberService < LdapFluff::GenericMemberServic
       _name_service_from_ldap_data(data.first)
   end
   
-   def _name_service_from_ldap_data(payload)
+  def find_user_name_dga(uid)
+      data = find_user(uid)
+      _name_dga_from_ldap_data(data.first)
+  end
+  
+  def _name_dga_from_ldap_data(payload)
+    data = []
+    if !payload.nil?
+      data = payload[:description]
+    end
+    data
+  end
+   
+  def _name_service_from_ldap_data(payload)
     data = []
     if !payload.nil?
       data = payload[:service]
