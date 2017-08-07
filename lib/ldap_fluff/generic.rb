@@ -53,9 +53,9 @@ class LdapFluff::Generic
     return []
   end
   
-  def name_dga_for_uid(uid)
+  def name_direction_for_uid(uid)
     service_bind
-    @member_service.find_user_name_dga(uid)
+    @member_service.find_user_name_direction(uid)
   rescue self.class::MemberService::UIDNotFoundException
     return []
   end
