@@ -61,9 +61,9 @@ class LdapFluff
     end
   end
   
-  def name_dga(uid)
-    instrument('name_dga.ldap_fluff', :uid => uid) do |payload|
-      @ldap.name_dga_for_uid(uid)
+  def name_direction(uid)
+    instrument('name_direction.ldap_fluff', :uid => uid) do |payload|
+      @ldap.name_direction_for_uid(uid)
     end
   end
 
