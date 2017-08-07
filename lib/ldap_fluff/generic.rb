@@ -59,6 +59,13 @@ class LdapFluff::Generic
   rescue self.class::MemberService::UIDNotFoundException
     return []
   end
+  
+  def name_dga_for_uid(uid)
+    service_bind
+    @member_service.find_user_name_dga(uid)
+  rescue self.class::MemberService::UIDNotFoundException
+    return []
+  end
 
   def users_for_gid(gid)
     return [] unless group_exists?(gid)
