@@ -72,6 +72,12 @@ class LdapFluff
       @ldap.name_dga_for_uid(uid)
     end
   end
+  
+  def manager_id(uid)
+    instrument('name_dga.ldap_fluff', :uid => uid) do |payload|
+      @ldap.manager_id_for_uid(uid)
+    end
+  end
 
   # return true if a user is in all of the groups
   # in grouplist
