@@ -66,7 +66,14 @@ class LdapFluff::Generic
   rescue self.class::MemberService::UIDNotFoundException
     return []
   end
-
+  
+  def manager_id_for_uid(uid)
+    service_bind
+    @member_service.find_user_manager_id(uid)
+  rescue self.class::MemberService::UIDNotFoundException
+    return []
+  end
+  
   def users_for_gid(gid)
     return [] unless group_exists?(gid)
     search = @member_service.find_group(gid).last
