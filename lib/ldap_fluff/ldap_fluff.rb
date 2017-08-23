@@ -74,7 +74,7 @@ class LdapFluff
   end
   
   def manager_id(uid)
-    instrument('name_dga.ldap_fluff', :uid => uid) do |payload|
+    instrument('manager_id.ldap_fluff', :uid => uid) do |payload|
       @ldap.manager_id_for_uid(uid)
     end
   end
