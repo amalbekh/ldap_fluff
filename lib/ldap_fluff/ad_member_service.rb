@@ -77,7 +77,7 @@ class LdapFluff::ActiveDirectory::MemberService < LdapFluff::GenericMemberServic
     data
   end
    
-  def _name_service_from_ldap_data(payload)
+  def _service_id_from_ldap_data(payload)
     data = []
     if !payload.nil?
       data = payload[:serviceNumber]
