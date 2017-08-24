@@ -46,9 +46,9 @@ class LdapFluff::Generic
     return []
   end
   
-  def name_service_for_uid(uid)
+  def service_id_for_uid(uid)
     service_bind
-    @member_service.find_user_name_service(uid)
+    @member_service.find_user_service_id(uid)
   rescue self.class::MemberService::UIDNotFoundException
     return []
   end
