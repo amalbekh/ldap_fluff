@@ -20,9 +20,9 @@ class LdapFluff::ActiveDirectory::MemberService < LdapFluff::GenericMemberServic
       _service_from_ldap_data(data.first)
   end
   
-  def find_user_name_service(uid)
+  def find_user_service_id(uid)
       data = find_user(uid)
-      _name_service_from_ldap_data(data.first)
+      _service_id_from_ldap_data(data.first)
   end
   
   def find_user_name_direction(uid)
@@ -80,7 +80,7 @@ class LdapFluff::ActiveDirectory::MemberService < LdapFluff::GenericMemberServic
   def _name_service_from_ldap_data(payload)
     data = []
     if !payload.nil?
-      data = payload[:service]
+      data = payload[:serviceNumber]
     end
     data
   end
