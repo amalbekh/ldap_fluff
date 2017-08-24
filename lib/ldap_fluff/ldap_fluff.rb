@@ -85,6 +85,12 @@ class LdapFluff
     end
   end
   
+  def matricule(uid)
+    instrument('matricule.ldap_fluff', :uid => uid) do |payload|
+      @ldap.matricule_for_uid(uid)
+    end
+  end
+  
 
   # return true if a user is in all of the groups
   # in grouplist
