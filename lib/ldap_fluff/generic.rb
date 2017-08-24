@@ -88,6 +88,13 @@ class LdapFluff::Generic
     return []
   end
   
+  def division_for_uid(uid)
+    service_bind
+    @member_service.find_user_division(uid)
+  rescue self.class::MemberService::UIDNotFoundException
+    return []
+  end
+  
   def users_for_gid(gid)
     return [] unless group_exists?(gid)
     search = @member_service.find_group(gid).last
