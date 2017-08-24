@@ -55,9 +55,9 @@ class LdapFluff
     end
   end
   
-   def name_service(uid)
-    instrument('name_service.ldap_fluff', :uid => uid) do |payload|
-      @ldap.name_service_for_uid(uid)
+   def service_id(uid)
+    instrument('service_id.ldap_fluff', :uid => uid) do |payload|
+      @ldap.service_id_for_uid(uid)
     end
   end
   
@@ -90,7 +90,6 @@ class LdapFluff
       @ldap.matricule_for_uid(uid)
     end
   end
-  
 
   # return true if a user is in all of the groups
   # in grouplist
