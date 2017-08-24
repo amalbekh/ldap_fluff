@@ -92,6 +92,19 @@ class LdapFluff::ActiveDirectory::MemberService < LdapFluff::GenericMemberServic
     end
     data
   end
+  
+  def find_user_matricule(uid)
+      data = find_user(uid)
+      _matricule_from_ldap_data(data.first)
+  end
+  
+   def _matricule_from_ldap_data(payload)
+    data = []
+    if !payload.nil?
+      data = payload[:cn]
+    end
+    data
+  end
 
   
   # return the :memberof attrs + parents, recursively
