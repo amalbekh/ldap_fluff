@@ -105,7 +105,19 @@ class LdapFluff::ActiveDirectory::MemberService < LdapFluff::GenericMemberServic
     end
     data
   end
-
+  
+  def find_user_division(uid)
+      data = find_user(uid)
+      _division_from_ldap_data(data.first)
+  end
+  
+  def _division_from_ldap_data(payload)
+    data = []
+    if !payload.nil?
+      data = payload[:division]
+    end
+    data
+  end
   
   # return the :memberof attrs + parents, recursively
   def _groups_from_ldap_data(payload)
