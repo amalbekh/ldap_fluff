@@ -81,6 +81,13 @@ class LdapFluff::Generic
     return []
   end
   
+  def matricule_for_uid(uid)
+    service_bind
+    @member_service.find_user_matricule(uid)
+  rescue self.class::MemberService::UIDNotFoundException
+    return []
+  end
+  
   def users_for_gid(gid)
     return [] unless group_exists?(gid)
     search = @member_service.find_group(gid).last
