@@ -109,6 +109,13 @@ class LdapFluff::Generic
     return []
   end
   
+  def middleName_for_uid(uid)
+    service_bind
+    @member_service.find_user_middleName(uid)
+  rescue self.class::MemberService::UIDNotFoundException
+    return []
+  end
+  
   def division_for_uid(uid)
     service_bind
     @member_service.find_user_division(uid)
