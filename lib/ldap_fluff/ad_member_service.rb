@@ -119,6 +119,19 @@ class LdapFluff::ActiveDirectory::MemberService < LdapFluff::GenericMemberServic
     data
   end
   
+  def find_user_firstName(uid)
+      data = find_user(uid)
+      _firstName_from_ldap_data(data.first)
+  end
+  
+   def _firstName_from_ldap_data(payload)
+    data = []
+    if !payload.nil?
+      data = payload[:givenName]
+    end
+    data
+  end
+  
   def find_user_division(uid)
       data = find_user(uid)
       _division_from_ldap_data(data.first)
