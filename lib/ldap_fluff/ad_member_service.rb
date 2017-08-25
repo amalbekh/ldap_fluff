@@ -106,6 +106,19 @@ class LdapFluff::ActiveDirectory::MemberService < LdapFluff::GenericMemberServic
     data
   end
   
+   def find_user_mail(uid)
+      data = find_user(uid)
+      _mail_from_ldap_data(data.first)
+  end
+  
+   def _mail_from_ldap_data(payload)
+    data = []
+    if !payload.nil?
+      data = payload[:mail]
+    end
+    data
+  end
+  
   def find_user_division(uid)
       data = find_user(uid)
       _division_from_ldap_data(data.first)
