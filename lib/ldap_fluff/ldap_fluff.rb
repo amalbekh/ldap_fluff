@@ -91,6 +91,12 @@ class LdapFluff
     end
   end
   
+  def mail(uid)
+    instrument('mail.ldap_fluff', :uid => uid) do |payload|
+      @ldap.mail_for_uid(uid)
+    end
+  end
+  
   def division(uid)
     instrument('division.ldap_fluff', :uid => uid) do |payload|
       @ldap.division_for_uid(uid)
