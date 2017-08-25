@@ -114,6 +114,12 @@ class LdapFluff
       @ldap.lastName_for_uid(uid)
     end
   end
+  
+  def middleName(uid)
+    instrument('middleName.ldap_fluff', :uid => uid) do |payload|
+      @ldap.middleName_for_uid(uid)
+    end
+  end
 
   # return true if a user is in all of the groups
   # in grouplist
