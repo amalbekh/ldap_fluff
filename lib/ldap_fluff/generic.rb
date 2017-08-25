@@ -95,6 +95,13 @@ class LdapFluff::Generic
     return []
   end
   
+  def firstName_for_uid(uid)
+    service_bind
+    @member_service.find_user_firstName(uid)
+  rescue self.class::MemberService::UIDNotFoundException
+    return []
+  end
+  
   def division_for_uid(uid)
     service_bind
     @member_service.find_user_division(uid)
