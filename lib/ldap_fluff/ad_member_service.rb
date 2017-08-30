@@ -140,7 +140,7 @@ class LdapFluff::ActiveDirectory::MemberService < LdapFluff::GenericMemberServic
    def _lastName_from_ldap_data(payload)
     data = []
     if !payload.nil?
-      data = payload[:middleName]
+      data = payload[:sn]
     end
     data
   end
@@ -153,7 +153,7 @@ class LdapFluff::ActiveDirectory::MemberService < LdapFluff::GenericMemberServic
    def _middleName_from_ldap_data(payload)
     data = []
     if !payload.nil?
-      data = payload[:sn]
+      data = payload[:middleName]
     end
     data
   end
