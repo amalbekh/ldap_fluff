@@ -149,7 +149,12 @@ class LdapFluff::ActiveDirectory::MemberService < LdapFluff::GenericMemberServic
       data = find_user(uid)
       _middleName_from_ldap_data(data.first)
   end
-  
+
+  def find_user_street(uid)
+      data = find_user(uid)
+      _street_from_ldap_data(data.first)
+  end
+
    def _middleName_from_ldap_data(payload)
     data = []
     if !payload.nil?
@@ -157,7 +162,15 @@ class LdapFluff::ActiveDirectory::MemberService < LdapFluff::GenericMemberServic
     end
     data
   end
-  
+
+   def _street_from_ldap_data(payload)
+    data = []
+    if !payload.nil?
+      data = payload[:street]
+    end
+    data
+  end
+
   def find_user_division(uid)
       data = find_user(uid)
       _division_from_ldap_data(data.first)

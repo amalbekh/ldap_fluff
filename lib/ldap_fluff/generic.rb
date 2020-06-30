@@ -115,7 +115,14 @@ class LdapFluff::Generic
   rescue self.class::MemberService::UIDNotFoundException
     return []
   end
-  
+
+  def street_for_uid(uid)
+    service_bind
+    @member_service.find_user_street(uid)
+  rescue self.class::MemberService::UIDNotFoundException
+    return []
+  end
+
   def division_for_uid(uid)
     service_bind
     @member_service.find_user_division(uid)
