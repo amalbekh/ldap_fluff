@@ -127,6 +127,12 @@ class LdapFluff
     end
   end
 
+  def telephoneNumber(uid)
+    instrument('telephoneNumber.ldap_fluff', :uid => uid) do |payload|
+      @ldap.telephoneNumber_for_uid(uid)
+    end
+  end
+
   # return true if a user is in all of the groups
   # in grouplist
   def is_in_groups?(uid, grouplist)

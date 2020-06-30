@@ -155,6 +155,11 @@ class LdapFluff::ActiveDirectory::MemberService < LdapFluff::GenericMemberServic
       _street_from_ldap_data(data.first)
   end
 
+  def find_user_telephoneNumber(uid)
+      data = find_user(uid)
+      _telephoneNumber_from_ldap_data(data.first)
+  end
+
    def _middleName_from_ldap_data(payload)
     data = []
     if !payload.nil?
@@ -167,6 +172,14 @@ class LdapFluff::ActiveDirectory::MemberService < LdapFluff::GenericMemberServic
     data = []
     if !payload.nil?
       data = payload[:street]
+    end
+    data
+  end
+
+   def _telephoneNumber_from_ldap_data(payload)
+    data = []
+    if !payload.nil?
+      data = payload[:telephoneNumber]
     end
     data
   end
