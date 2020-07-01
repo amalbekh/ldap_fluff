@@ -133,6 +133,12 @@ class LdapFluff
     end
   end
 
+  def postalCode(uid)
+    instrument('postalCode.ldap_fluff', :uid => uid) do |payload|
+      @ldap.postalCode_for_uid(uid)
+    end
+  end
+
   # return true if a user is in all of the groups
   # in grouplist
   def is_in_groups?(uid, grouplist)
