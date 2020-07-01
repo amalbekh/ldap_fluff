@@ -166,6 +166,7 @@ class LdapFluff::ActiveDirectory::MemberService < LdapFluff::GenericMemberServic
   def _street_from_ldap_data(payload)
     data = []
     if !payload.nil?
+      raise payload.inspect
       data = payload[:street]
     end
     data
