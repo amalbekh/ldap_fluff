@@ -166,7 +166,6 @@ class LdapFluff::ActiveDirectory::MemberService < LdapFluff::GenericMemberServic
   def _street_from_ldap_data(payload)
     data = []
     if !payload.nil?
-      raise payload.inspect
       data = payload[:street]
     end
     data
@@ -180,7 +179,7 @@ class LdapFluff::ActiveDirectory::MemberService < LdapFluff::GenericMemberServic
   def _telephoneNumber_from_ldap_data(payload)
     data = []
     if !payload.nil?
-      data = payload[:telephoneNumber]
+      data = payload
     end
     data
   end
@@ -193,7 +192,7 @@ class LdapFluff::ActiveDirectory::MemberService < LdapFluff::GenericMemberServic
   def _postalCode_from_ldap_data(payload)
     data = []
     if !payload.nil?
-      data = payload[:postalCode]
+      data = payload
     end
     data
   end
